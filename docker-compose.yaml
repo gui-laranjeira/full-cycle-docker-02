@@ -30,7 +30,7 @@ services:
     restart: always
     tty: true
     volumes:
-      - .docker/mysql:/var/lib/mysql
+      - ./mysql:/var/lib/mysql
     environment:
       - MYSQL_DATABASE=node-db
       - MYSQL_ROOT_PASSWORD=root
