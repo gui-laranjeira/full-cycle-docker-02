@@ -2,6 +2,8 @@ FROM node:18-alpine
 
 WORKDIR /usr/src/app
 
+RUN apk add bash
+
 ENV DOCKERIZE_VERSION v0.7.0
 RUN apk update --no-cache \
     && apk add --no-cache wget openssl \
@@ -16,4 +18,4 @@ COPY . .
 
 EXPOSE 4200
 
-CMD ["node", "index.js"]
+# CMD ["node", "index.js"]

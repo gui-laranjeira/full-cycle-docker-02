@@ -5,10 +5,11 @@ services:
       context: ./node
       dockerfile: Dockerfile
     container_name: node
-    entrypoint: dockerize -wait tcp://mysql-db:3306 -timeout 20s docker-entrypoint.sh
-    command: npm install && node index.js
+    entrypoint: dockerize -wait tcp://mysql-db:3306 -timeout 20s node index.js
+    tty: true
     volumes:
       - ./node:/usr/src/app
+      - /usr/src/app/node_modules
     networks:
       - backend
     depends_on:
@@ -18,6 +19,7 @@ services:
     build:
       context: ./nginx
       dockerfile: Dockerfile
+    container_name: nginx
     ports:
       - 8080:80
     networks:
